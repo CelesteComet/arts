@@ -1,0 +1,10 @@
+<form method='post' action='/api/venues'>
+	<input name="venue[name]" type="text" value=<%= @venue.name %> >	
+	<input name="venue[location]" type="text" value=<%= @venue.location %> >
+	<input name="venue[start_datetime]" type="text" value=<%= @venue.start_datetime%> >
+	<input name="venue[end_datetime]" type="text" value=<%= @venue.end_datetime%> >
+	<input type="submit">
+</form>
+
+<%= @venue.inspect %>
+<%= @venue.location %>

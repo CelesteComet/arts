@@ -27,6 +27,27 @@ class Api::VenuesController < ApplicationController
 		end
 	end
 
+	def edit
+		@venue = Venue.find(params[:id])
+		render('venues/edit.html.erb')
+	end
+
+  def update
+  	@venue = Venue.find(params[:id])
+  	if @venue.update(venue_params)
+  		render(json: { message: "Successfully Updated", data: @venue })
+  	else
+  		render(json: { message: "Unsuccessful", errors: @venue.errors, status: 400})
+  	end
+  end
+
+  def destory
+  	@venue = Venue.find(params[:id])
+  	if @venue.destroy
+  		render(json: { message: "Successfully Destroyed", status: 200})
+  	end
+  end
+
 	private
 
 	def venue_params
