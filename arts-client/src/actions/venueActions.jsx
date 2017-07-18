@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 // Venue List
 export const REQUEST_VENUES = 'REQUEST_VENUES';
@@ -86,10 +87,19 @@ export function createVenue(data) {
 				dispatch(createVenueSuccess(res));
 				dispatch(fetchVenues());
 			})
-			.catch(() => {
+			.catch((res) => {
 				dispatch(createVenueFailure);
 			})
+	}
+}
 
+// Destroy a single Venue
+export function deleteVenue(venueID) {
+	return function(dispatch) {
+		return axios.delete(ROOT_URL + '/' + venueID)
+			.then((res) => {
+
+			})
 	}
 }
 

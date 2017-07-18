@@ -5,14 +5,24 @@ import { connect } from 'react-redux';
 import VenueItemsList from './VenueItemsList';
 
 // Import Actions
-import { fetchVenue } from '../actions/venueActions';
+import { fetchVenue, deleteVenue } from '../actions/venueActions';
 
 
 
 class VenueDetail extends Component {
+	constructor() {
+		super();
+		this.handleClick = this.handleClick.bind(this);
+	}
+
 	componentDidMount() {
 		const { dispatch } = this.props;
 		dispatch(fetchVenue(this.props.match.params.id))
+	}
+
+	handleClick(venueID) {
+		const { dispatch } = this.props;
+		dispatch(deleteVenue(venueID));
 	}
 
 	render() {
@@ -32,6 +42,7 @@ class VenueDetail extends Component {
 					<p>{ venue.location }</p>
 					<p>{ venue.start_datetime }</p>
 					<p>{ venue.end_datetime }</p>
+					<button onClick={ this.handleClick.bind(null, venue.id) }>DELETE</button>
 					<hr/>
 				</div>
 			}

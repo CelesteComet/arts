@@ -1,6 +1,9 @@
 class Venue < ApplicationRecord
 	#validates_presence_of(:name, :location, :start_datetime, :end_datetime)
 
+	include FriendlyId
+	friendly_id(:name, {use: :slugged})
+
 	validates(:name, {
 		length: { maximum: 140 },
 		presence: true

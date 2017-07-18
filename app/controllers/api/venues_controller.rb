@@ -44,10 +44,12 @@ class Api::VenuesController < ApplicationController
   	end
   end
 
-  def destory
+  def destroy
   	@venue = Venue.find(params[:id])
   	if @venue.destroy
-  		render(json: { message: "Successfully Destroyed"}, status: 400)
+  		render(json: { message: "Successfully Destroyed"}, status: 200)
+  	else
+  		render(json: { message: "Unsuccessful", errors: @venue.errors }, status: 400)
   	end
   end
 
