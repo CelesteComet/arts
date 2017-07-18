@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+
+// React Router
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+// Redux
 import { Provider } from 'react-redux';
 
+// Components
 import VenueItemsListContainer from './components/VenueItemsListContainer';
+import VenueDetail from './components/VenueDetail';
 
 // Redux Store Configuration
 import configureStore from './store/configureStore';
@@ -16,11 +23,14 @@ let store = configureStore();
 class App extends Component {
   render() {
     return (
-      <Provider store={ store }>
-        <div> 
-          <VenueItemsListContainer />
-        </div>
-      </Provider>
+      <BrowserRouter>
+        <Provider store={ store }>
+        	<div>
+	          <Route exact path='/' component={ VenueItemsListContainer } />
+	          <Route path='/venues/:id' component={ VenueDetail } />
+	        </div>
+        </Provider>
+      </BrowserRouter>
     );
   }
 }
