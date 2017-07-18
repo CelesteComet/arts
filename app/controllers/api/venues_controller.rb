@@ -14,10 +14,12 @@ class Api::VenuesController < ApplicationController
 		end
 	end
 
+	# Temporary view. 
 	def new
 		render('venues/new.html.erb')
 	end
 
+	# Temporary view.
 	def create
 		@venue = Venue.create(venue_params)
 		if @venue.save 
@@ -27,6 +29,7 @@ class Api::VenuesController < ApplicationController
 		end
 	end
 
+	# Temporary view.
 	def edit
 		@venue = Venue.find(params[:id])
 		render('venues/edit.html.erb')
