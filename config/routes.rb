@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+	# User routes
+  resources :users, only: [:new, :create] 
+  
 	namespace :api do
 	  resources :venues
 	end

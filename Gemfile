@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # ALL MY CUSTOM GEMS
 gem 'rack-cors', :require => 'rack/cors'
 gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 
 
 group :development, :test do

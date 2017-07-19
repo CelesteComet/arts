@@ -21,3 +21,17 @@ end
 # Venue.create(name: "BBQ", location: "Hsinchu", start_datetime: "2017-07-20 00:00:00", end_datetime: "2017-08-01 00:00:00")
 
 puts "Created 10 Venues"
+
+bruce_user = User.create(name: "Bruce Wong", email: "brucewong21@gmail.com")
+bruce_user.password=('brucespassword')
+bruce_user.save
+
+alice_user = User.create(name: "Alice Wu", email: "alicewu720@gmail.com")
+alice_user.password=('alicespassword')
+alice_user.save
+
+sally_user = User.create(name: "Sally Wong", email: "sally@gmail.com")
+sally_user.password=('sallyspassword')
+sally_user.save
+
+puts "Created 3 Users"
