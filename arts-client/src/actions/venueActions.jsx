@@ -15,6 +15,12 @@ export const CREATE_VENUE = 'CREATE_VENUE';
 export const CREATE_VENUE_SUCCESS = 'CREATE_VENUE_SUCCESS';
 export const CREATE_VENUE_FAILURE = 'CREATE_VENUE_FAILURE';
 
+// Delete a Venue
+export const DELETE_VENUE = 'DELETE_VENUE';
+export const DELETE_VENUE_SUCCESS = 'DELETE_VENUE_SUCCESS';
+export const DELETE_VENUE_FAILURE = 'DELETE_VENUE_FAILURE';
+export const DELETE_VENUE_RESET	= 'DELETE_VENUE_RESET';
+
 
 const ROOT_URL = 'http://localhost:3000/api/venues';
 
@@ -54,6 +60,24 @@ export function createVenueSuccess(json) {
 export function createVenueFailure() {
 	return {
 		type: CREATE_VENUE_FAILURE
+	}
+}
+
+export function deleteVenueSuccess() {
+	return {
+		type: DELETE_VENUE_SUCCESS
+	}
+}
+
+export function deleteVenueFailure() {
+	return {
+		type: DELETE_VENUE_FAILURE
+	}
+}
+
+export function deleteVenueReset() {
+	return {
+		type: DELETE_VENUE_RESET
 	}
 }
 
@@ -98,7 +122,21 @@ export function deleteVenue(venueID) {
 	return function(dispatch) {
 		return axios.delete(ROOT_URL + '/' + venueID)
 			.then((res) => {
+				dispatch(deleteVenueSuccess());	
+				dispatch(deleteVenueReset());	
+			})
+			.catch((res) => {
+				dispatch(deleteVenueFailure());
+			})
+	}
+}
 
+// Update a single Venue
+export function updateVenue(data, venueID) {
+	return function(dispatch) {
+		return axios.put(ROOT_URL + '/' + venueID)
+			.then((res) => {
+				console.log(res);
 			})
 	}
 }

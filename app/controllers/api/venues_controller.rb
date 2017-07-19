@@ -1,13 +1,13 @@
 class Api::VenuesController < ApplicationController
 
 	def index
-		@venues = Venue.all
+		@venues = Venue.friendly.all
 		render(json: @venues)
 	end
 
 	def show
 		begin
-			@venue = Venue.find(params[:id])
+			@venue = Venue.friendly.find(params[:id])
 			render(json: @venue)
 		rescue ActiveRecord::RecordNotFound => e 
 			render(json: "Not Found", :status => 404)
@@ -36,7 +36,7 @@ class Api::VenuesController < ApplicationController
 	end
 
   def update
-  	@venue = Venue.find(params[:id])
+  	@venue = Venue.friendly.find(params[:id])
   	if @venue.update(venue_params)
   		render(json: { message: "Successfully Updated", data: @venue })
   	else

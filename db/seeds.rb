@@ -18,4 +18,6 @@ names = ['Jazz', 'Figure Skating', 'Magic Show', 'Art Exhibit', 'Food Exhibit', 
 	)
 end
 
+# Venue.create(name: "BBQ", location: "Hsinchu", start_datetime: "2017-07-20 00:00:00", end_datetime: "2017-08-01 00:00:00")
+
 puts "Created 10 Venues"

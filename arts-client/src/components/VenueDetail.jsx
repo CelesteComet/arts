@@ -5,9 +5,7 @@ import { connect } from 'react-redux';
 import VenueItemsList from './VenueItemsList';
 
 // Import Actions
-import { fetchVenue, deleteVenue } from '../actions/venueActions';
-
-
+import { fetchVenue, deleteVenue, deleteVenueReset } from '../actions/venueActions';
 
 class VenueDetail extends Component {
 	constructor() {
@@ -18,6 +16,13 @@ class VenueDetail extends Component {
 	componentDidMount() {
 		const { dispatch } = this.props;
 		dispatch(fetchVenue(this.props.match.params.id))
+	}
+
+	componentDidUpdate() {
+		if(this.props.state.venues.deleteSuccess) {
+			const { dispatch } = this.props;
+			this.props.history.push('/');
+		}
 	}
 
 	handleClick(venueID) {
@@ -31,18 +36,21 @@ class VenueDetail extends Component {
 		} else {
 			var venue = {};
 		}
-	
+
 		return (
 			<div>
 			{	venue &&
 				<div className='venu-item'>
-					<Link to={'/venues/' + venue.id}>
+					<Link to={'/venues/' + venue.slug}>
 						<p>{ venue.name }</p>
 					</Link>
 					<p>{ venue.location }</p>
 					<p>{ venue.start_datetime }</p>
 					<p>{ venue.end_datetime }</p>
 					<button onClick={ this.handleClick.bind(null, venue.id) }>DELETE</button>
+					<Link to={'/venues/' + venue.slug + '/edit'}>
+						<p>UPDATE</p>
+					</Link>
 					<hr/>
 				</div>
 			}
@@ -60,4 +68,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 VenueDetail = connect(mapStateToProps, mapDispatchToProps)(VenueDetail);
+
 export default VenueDetail;

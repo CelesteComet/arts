@@ -1,6 +1,7 @@
 import { 
 	REQUEST_VENUES, RECEIEVE_VENUES, REQUEST_VENUE, RECEIEVE_VENUE,
-	CREATE_VENUE, CREATE_VENUE_SUCCESS
+	CREATE_VENUE, CREATE_VENUE_SUCCESS,
+	DELETE_VENUE_SUCCESS, DELETE_VENUE_FAILURE, DELETE_VENUE_RESET
 } from '../actions/venueActions';
 
 const defaultState = {
@@ -48,6 +49,21 @@ const venues = (state = defaultState, action) => {
 				isFetching: false,
 				didInvalidate: false,
 				newVenue: action.payload,
+				lastUpdated: action.receivedAt
+			})
+		case DELETE_VENUE_SUCCESS:
+			return Object.assign({}, state, {
+				deleteSuccess: true,
+				lastUpdated: action.receivedAt
+			})
+		case DELETE_VENUE_FAILURE:
+			return Object.assign({}, state, {
+				deleteSuccess: false,
+				lastUpdated: action.receivedAt
+			})
+		case DELETE_VENUE_RESET:
+			return Object.assign({}, state, {
+				deleteSuccess: false,
 				lastUpdated: action.receivedAt
 			})
 		default:

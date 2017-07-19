@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 // Components
 import VenueItemsListContainer from './components/VenueItemsListContainer';
 import VenueDetail from './components/VenueDetail';
+import VenueEdit from './components/VenueEdit';
 
 // Redux Store Configuration
 import configureStore from './store/configureStore';
@@ -28,6 +29,7 @@ class App extends Component {
         	<div>
 	          <Route exact path='/' component={ VenueItemsListContainer } />
 	          <Route path='/venues/:id' component={ VenueDetail } />
+            <Route path='/venues/:id/edit' component={ VenueEdit } />
 	        </div>
         </Provider>
       </BrowserRouter>

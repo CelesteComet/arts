@@ -28,7 +28,7 @@ class VenueItemsList extends Component {
 					{this.props.state.venues.venues.map(function(item, index) {
 						return (
 							<li key={ item.id }>
-								<Link to={'/venues/' + item.id }><p>{ item.name }</p></Link>
+								<Link to={'/venues/' + item.slug }><p>{ item.name }</p></Link>
 							</li>
 						);
 					})}

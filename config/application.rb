@@ -29,7 +29,7 @@ module Arts
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options, :delete]
+        resource '*', :headers => :any, :methods => [:get, :post, :put, :options, :delete]
       end
     end
 
