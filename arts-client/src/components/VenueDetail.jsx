@@ -32,19 +32,21 @@ class VenueDetail extends Component {
 
 	render() {
 		if(this.props.state.venues.activeVenue) {
-			var venue = this.props.state.venues.activeVenue;
+			var venue = this.props.state.venues.activeVenue.venue;
+			var user = this.props.state.venues.activeVenue.user;
 		} else {
 			var venue = {};
 		}
 
 		return (
 			<div>
-			{	venue &&
+			{	venue && user &&
 				<div className='venu-item'>
 					<Link to={'/venues/' + venue.slug}>
 						<p>{ venue.name }</p>
 					</Link>
 					<p>{ venue.location }</p>
+					<p>{ user.name }</p>
 					<p>{ venue.start_datetime }</p>
 					<p>{ venue.end_datetime }</p>
 					<button onClick={ this.handleClick.bind(null, venue.id) }>DELETE</button>

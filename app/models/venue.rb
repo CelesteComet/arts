@@ -25,4 +25,6 @@ class Venue < ApplicationRecord
 		format: { with: /....-..-..\s..:..:../ },
 		presence: true
 	})
+
+	belongs_to :user
 end

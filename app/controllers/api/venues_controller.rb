@@ -8,7 +8,7 @@ class Api::VenuesController < ApplicationController
 	def show
 		begin
 			@venue = Venue.friendly.find(params[:id])
-			render(json: @venue)
+			render(json: {venue: @venue, user: @venue.user})
 		rescue ActiveRecord::RecordNotFound => e 
 			render(json: "Not Found", :status => 404)
 		end
