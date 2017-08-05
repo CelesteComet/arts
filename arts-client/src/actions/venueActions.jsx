@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 
 // Venue List
 export const REQUEST_VENUES = 'REQUEST_VENUES';
@@ -134,7 +133,7 @@ export function deleteVenue(venueID) {
 // Update a single Venue
 export function updateVenue(data, venueID) {
 	return function(dispatch) {
-		return axios.put(ROOT_URL + '/' + venueID)
+		return axios.put(ROOT_URL + '/' + venueID, data)
 			.then((res) => {
 				console.log(res);
 			})

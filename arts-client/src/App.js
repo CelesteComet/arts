@@ -9,6 +9,8 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 // Components
+import Home from './components/Home';
+import SignupPage from './components/SignupPage';
 import VenueItemsListContainer from './components/VenueItemsListContainer';
 import VenueDetail from './components/VenueDetail';
 import VenueEdit from './components/VenueEdit';
@@ -27,7 +29,8 @@ class App extends Component {
       <BrowserRouter>
         <Provider store={ store }>
         	<div>
-	          <Route exact path='/' component={ VenueItemsListContainer } />
+            <Route exact path='/' component={ Home } />
+            <Route exact path='/signup' component={ SignupPage } />
 	          <Route path='/venues/:id' component={ VenueDetail } />
             <Route path='/venues/:id/edit' component={ VenueEdit } />
 	        </div>

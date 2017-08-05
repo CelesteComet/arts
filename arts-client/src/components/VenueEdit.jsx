@@ -6,7 +6,18 @@ class VenueEdit extends Component {
 	constructor() {
 		super();
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		this.state = {
+			name: ""
+		}
 	}
+
+	componentDidMount() {
+		this.setState({
+			name: this.props.state.venues.activeVenue.name
+		})
+	}
+
 
 	handleSubmit(e) {
 		e.preventDefault();
@@ -16,14 +27,22 @@ class VenueEdit extends Component {
 		dispatch(updateVenue(data, ID));
 	}
 
+	handleChange(e) {
+		e.preventDefault();
+		this.setState({
+			name: e.target.value
+		})
+	}
+
 	render() {
+		var venue = this.props.state.venues.activeVenue;
 		return (
 			<div>
 				<form onSubmit={ this.handleSubmit }>
-					<input type='text' name='venue[name]' placeholder='name' />
-					<input type='text' name='venue[location]' placeholder='location' />
-					<input type='text' name='venue[start_datetime]' placeholder='state_datetime' />
-					<input type='text' name='venue[end_datetime]' placeholder='end_datetime' />
+					<input type='text' name='venue[name]' value={this.state.name} onChange={ this.handleChange }/>
+					<input type='text' name='venue[location]' value={venue.location} />
+					<input type='text' name='venue[start_datetime]' value={venue.start_datetime} />
+					<input type='text' name='venue[end_datetime]' value={venue.end_datetime} />
 					<input type='submit' value='Update' />
 				</form>
 			</div>
