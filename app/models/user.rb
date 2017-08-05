@@ -19,4 +19,10 @@ class User < ApplicationRecord
 		@password = BCrypt::Password.create(new_password)
 		self.password_digest = @password
 	end
+
+	def self.find_by_credentials(email, password)
+		user = User.find_by(:email => email)
+		user && user.is_password?(password) ? user : nil
+	end
+
 end

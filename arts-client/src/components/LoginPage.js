@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
+import { login } from '../actions/userActions';
 import { connect } from 'react-redux';
-import { signUpUser } from '../actions/userActions';
 
-
-
-class SignupPage extends Component {
+class LoginPage extends Component {
 	constructor() {
 		super();
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	componentDidUpdate() {
+
 		if(this.props.state.users.isAuthenticated) {
+
 			const { dispatch } = this.props;
 			this.props.history.push('/');
 		}
@@ -21,7 +21,7 @@ class SignupPage extends Component {
 		e.preventDefault();
 		const { dispatch } = this.props;
 		var formData = new FormData(e.target);
-		dispatch( signUpUser(formData) );
+		dispatch( login(formData) );
 	}
 
 	render() {
@@ -52,6 +52,7 @@ const mapDispatchToProps = (dispatch) => {
 	return { dispatch }
 }
 
-SignupPage = connect(mapStateToProps, mapDispatchToProps)(SignupPage);
+LoginPage = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
 
-export default SignupPage;
+
+export default LoginPage;

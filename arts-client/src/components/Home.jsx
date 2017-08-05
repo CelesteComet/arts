@@ -18,8 +18,8 @@ class Home extends Component {
 	}
 
 	render() {
-		if(this.props.state.users.user) {
-			var user = this.props.state.users.user;
+		if(this.props.state.users.isAuthenticated) {
+			var user = true;
 		}
 		return (
 			<div>
@@ -33,7 +33,10 @@ class Home extends Component {
 
 				{
 					!user &&
-					<Link to={'/signup'}>Sign Up</Link>
+					<div>
+						<Link to={'/signup'}>Sign Up</Link>
+						<Link to={'/login'}>Log In</Link>
+					</div>
 				}
 
 				<div>

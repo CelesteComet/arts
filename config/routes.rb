@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'sessions/create'
+
 	# User routes
   resources :users, only: [:new, :create] 
   

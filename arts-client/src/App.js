@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 // Components
 import Home from './components/Home';
 import SignupPage from './components/SignupPage';
+import LoginPage from './components/LoginPage';
 import VenueItemsListContainer from './components/VenueItemsListContainer';
 import VenueDetail from './components/VenueDetail';
 import VenueEdit from './components/VenueEdit';
@@ -31,6 +32,7 @@ class App extends Component {
         	<div>
             <Route exact path='/' component={ Home } />
             <Route exact path='/signup' component={ SignupPage } />
+            <Route exact path='/login' component={ LoginPage } />
 	          <Route path='/venues/:id' component={ VenueDetail } />
             <Route path='/venues/:id/edit' component={ VenueEdit } />
 	        </div>

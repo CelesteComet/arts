@@ -1,12 +1,13 @@
 import { 
 	SIGNUP_USER, SIGNUP_USER_SUCCESS, SIGNUP_USER_FAILURE,
-	LOG_OUT
+	RECEIVE_LOGOUT, LOGIN_SUCCESS
 } from '../actions/userActions';
 	
 const defaultState = {
 	isFetching: false,
 	user: null,
-	errors: null
+	errors: null,
+	isAuthenticated: localStorage.getItem('id_token') ? true : false
 }
 
 const users = (state = defaultState, action) => {
@@ -19,17 +20,23 @@ const users = (state = defaultState, action) => {
 		case SIGNUP_USER_SUCCESS:
 			return Object.assign({}, state, {
 				isFetching: false,
-				user: action.payload,
-				errors: false
+				errors: false,
+				isAuthenticated: true
 			})
 		case SIGNUP_USER_FAILURE:
 			return Object.assign({}, state, {
 				isFetching: false,
 				errors: true // FIX THIS IN FUTURE VERSIONS, RETURN ERRORS?
 			})
-		case LOG_OUT:
+		case LOGIN_SUCCESS:
 			return Object.assign({}, state, {
-				user: null
+				isFetching: false,
+				errors: false,
+				isAuthenticated: true
+			})
+		case RECEIVE_LOGOUT:
+			return Object.assign({}, state, {
+				isAuthenticated: false
 			})
 		default: 
 			return state
